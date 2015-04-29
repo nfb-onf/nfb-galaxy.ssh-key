@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Mathieu Avoine
+  description: Setup ssh keys to grant access to or from a host
+  company: National Film Board of Canada (NFB)
+  min_ansible_version: 1.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - networking
+  - system
+dependencies: []

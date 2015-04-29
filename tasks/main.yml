@@ -1,0 +1,8 @@
+---
+# tasks file for nfb-galaxy.ssh-key
+
+- include: outbound.yml
+  when: outbound is defined
+
+- include: inbound.yml
+  when: inbound is defined

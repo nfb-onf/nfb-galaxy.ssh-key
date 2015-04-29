@@ -1,0 +1,13 @@
+
+- name: Lookup user's home directory
+  shell: "getent passwd '{{ inbound.user }}' | cut -d: -f6"
+  register: user_home
+  changed_when: False
+  failed_when: "'{{ user_home.stdout }}' == ''"
+
+- name: Add the public key to the user's authorized_keys
+  lineinfile:
+    dest="{{ user_home.stdout }}/.ssh/authorized_keys"
+    line="{{ lookup('file', inbound.public_key) }}"
+    create=yes
+  sudo: yes
