@@ -19,11 +19,11 @@
     dest="~{{ outbound.user }}/.ssh/config"
     create=yes
     line="Host {{ item }}"
-  with_items: outbound.hosts
+  with_items: "{{ outbound.hosts }}"
 
 - name: Set ssh configuration for git (key path)
   lineinfile:
     dest="~{{ outbound.user }}/.ssh/config"
     insertafter="Host {{ item }}"
     line=" IdentityFile ~/.ssh/{{ outbound.private_key.name }}"
-  with_items: outbound.hosts
+  with_items: "{{ outbound.hosts }}"
